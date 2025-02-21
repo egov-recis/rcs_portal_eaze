@@ -1,7 +1,7 @@
 name: rcs_portal_eaze
-description: "A new Flutter plugin project."
+description: "A Plugin Project From RCS As A Portal Eaze Feature."
 version: 0.0.1
-homepage:
+homepage: https://github.com/egov-recis/rcs_portal_eaze
 
 environment:
   sdk: ^3.6.1
