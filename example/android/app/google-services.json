@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "1029288179690",
+    "firebase_url": "https://recis-portlet-default-rtdb.firebaseio.com",
+    "project_id": "recis-portlet",
+    "storage_bucket": "recis-portlet.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1029288179690:android:1fc952df25afeaa2d3e493",
+        "android_client_info": {
+          "package_name": "com.example.portlet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1029288179690-318r9njmrpo3lmg9ifukubeigslonimb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnyjinEpO5uUn9yeK23RRdE6nKxX09M1E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1029288179690-318r9njmrpo3lmg9ifukubeigslonimb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1029288179690-b7d9050ti0emc00p54io7u0djvabgvtk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.portlet"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1029288179690:android:e292311d3897f48bd3e493",
+        "android_client_info": {
+          "package_name": "com.example.rcs_portal_eaze_example"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1029288179690-318r9njmrpo3lmg9ifukubeigslonimb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnyjinEpO5uUn9yeK23RRdE6nKxX09M1E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1029288179690-318r9njmrpo3lmg9ifukubeigslonimb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1029288179690-b7d9050ti0emc00p54io7u0djvabgvtk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.portlet"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
