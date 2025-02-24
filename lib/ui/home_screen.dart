@@ -11,9 +11,9 @@ import 'package:rcs_portal_eaze/ui/payment/payment_screen.dart';
 import 'package:rcs_portal_eaze/utils/util.dart';
 import 'package:rcs_portal_eaze/utils/widgets.dart';
 
-class HomeScreen extends GetView<HomeController> {
+class PortalEazeHomeScreen extends GetView<PortalEazeHomeController> {
   final String uniqueCode;
-  const HomeScreen({super.key, required this.uniqueCode});
+  const PortalEazeHomeScreen({super.key, required this.uniqueCode});
 
   @override
   Widget build(BuildContext context) {

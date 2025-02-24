@@ -21,8 +21,8 @@ import 'package:rcs_portal_eaze/model/token.dart';
 import 'package:rcs_portal_eaze/model/tracking.dart';
 import 'package:rcs_portal_eaze/model/virtual_account.dart';
 
-class ApiService {
-  ApiService() {
+class PortalEazeApiService {
+  PortalEazeApiService() {
     client = Dio();
     clientToken = Dio();
 

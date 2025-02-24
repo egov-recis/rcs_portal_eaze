@@ -112,8 +112,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     var result = await controller.postPayment(context);
 
                     if (result != null) {
-                      Get.lazyPut(() => VirtualAccountController());
-                      Get.to(() => VirtualAccountScreen(), arguments: result);
+                      Get.lazyPut(() => PortalEazeVirtualAccountController());
+                      Get.to(() => PortalEazeVirtualAccountScreen(),
+                          arguments: result);
                     }
                   },
                   child: Container(

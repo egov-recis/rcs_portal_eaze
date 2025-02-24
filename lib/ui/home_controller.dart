@@ -10,8 +10,8 @@ import 'package:rcs_portal_eaze/model/response/response_payment_history.dart';
 import 'package:rcs_portal_eaze/model/transaction.dart';
 import 'package:rcs_portal_eaze/model/virtual_account.dart';
 
-class HomeController extends GetxController {
-  var service = Get.find<ApiService>();
+class PortalEazeHomeController extends GetxController {
+  var service = Get.find<PortalEazeApiService>();
 
   RxBool loadingNews = false.obs;
   RxBool loadingPaymentType = false.obs;

@@ -6,8 +6,8 @@ import 'package:rcs_portal_eaze/model/tracking.dart';
 import 'package:rcs_portal_eaze/model/virtual_account.dart';
 import 'package:rcs_portal_eaze/utils/util.dart';
 
-class VirtualAccountController extends GetxController {
-  var service = Get.find<ApiService>();
+class PortalEazeVirtualAccountController extends GetxController {
+  var service = Get.find<PortalEazeApiService>();
   String ref = "";
   String clientRef = "";
   RxString timer = "3600".obs;

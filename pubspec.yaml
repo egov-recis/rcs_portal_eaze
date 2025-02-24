@@ -1,6 +1,6 @@
 name: rcs_portal_eaze
 description: "A Plugin Project From RCS As A Portal Eaze Feature."
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/egov-recis/rcs_portal_eaze
 
 environment:

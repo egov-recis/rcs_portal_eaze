@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     Dependencies().initialize();
     return GetMaterialApp(
-      home: HomeScreen(uniqueCode: "test123"),
+      home: PortalEazeHomeScreen(uniqueCode: "test123"),
     );
   }
 }

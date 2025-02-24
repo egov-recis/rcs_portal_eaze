@@ -5,3 +5,7 @@
 ## 0.0.2
 
 * Add link repo in read me
+
+## 0.0.3
+
+* Rename class name

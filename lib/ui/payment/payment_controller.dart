@@ -8,7 +8,7 @@ import 'package:rcs_portal_eaze/model/response/response_denom.dart';
 import 'package:rcs_portal_eaze/utils/util.dart';
 
 class PaymentController extends GetxController {
-  var service = Get.find<ApiService>();
+  var service = Get.find<PortalEazeApiService>();
   TextEditingController tfPaymentTypeController = TextEditingController();
   TextEditingController tfIdBillingController = TextEditingController();
   TextEditingController tfTotalController = TextEditingController();

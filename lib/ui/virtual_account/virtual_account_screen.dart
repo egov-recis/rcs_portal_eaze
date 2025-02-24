@@ -10,8 +10,9 @@ import 'package:rcs_portal_eaze/utils/util.dart';
 import 'package:rcs_portal_eaze/utils/widgets.dart';
 import 'virtual_account_controller.dart';
 
-class VirtualAccountScreen extends GetView<VirtualAccountController> {
-  const VirtualAccountScreen({super.key});
+class PortalEazeVirtualAccountScreen
+    extends GetView<PortalEazeVirtualAccountController> {
+  const PortalEazeVirtualAccountScreen({super.key});
 
   void startTimer() {
     Timer.periodic(const Duration(seconds: 1), (timer) {
@@ -31,7 +32,7 @@ class VirtualAccountScreen extends GetView<VirtualAccountController> {
     return WillPopScope(
       onWillPop: () async {
         controller.deleteRef();
-        Get.delete<VirtualAccountController>();
+        Get.delete<PortalEazeVirtualAccountController>();
         return true;
       },
       child: Scaffold(
@@ -1248,7 +1249,7 @@ class VirtualAccountScreen extends GetView<VirtualAccountController> {
                           Obx(() {
                             if (int.parse(controller.timer.value) <= 0) {
                               // controller.deleteRef();
-                              Get.delete<VirtualAccountController>();
+                              Get.delete<PortalEazeVirtualAccountController>();
                               Get.back();
                             }
                             return Text(

@@ -6,8 +6,8 @@ import 'package:rcs_portal_eaze/ui/home_controller.dart';
 
 class Dependencies {
   void initialize() async {
-    Get.lazyPut(() => ApiService());
-    Get.lazyPut(() => HomeController());
+    Get.lazyPut(() => PortalEazeApiService());
+    Get.lazyPut(() => PortalEazeHomeController());
     var deviceId = await Preferences().getUdid();
     if (deviceId.isEmpty) {
       String udid = await FlutterUdid.udid;
