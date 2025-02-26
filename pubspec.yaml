@@ -1,6 +1,6 @@
 name: rcs_portal_eaze
 description: "A Plugin Project From RCS As A Portal Eaze Feature."
-version: 0.0.3
+version: 0.0.4
 homepage: https://github.com/egov-recis/rcs_portal_eaze
 
 environment:
@@ -62,8 +62,8 @@ flutter:
     # -------------------
 
   # To add assets to your plugin package, add an assets section, like this:
-  assets:
-    - assets/images/
+  # assets:
+  #   - assets/images/
   #   - images/a_dot_ham.jpeg
   #
   # For details regarding assets in packages, see

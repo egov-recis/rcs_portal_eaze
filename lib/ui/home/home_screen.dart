@@ -5,7 +5,7 @@ import 'package:rcs_portal_eaze/common/strings.dart';
 import 'package:rcs_portal_eaze/common/text.dart';
 import 'package:rcs_portal_eaze/model/news.dart';
 import 'package:rcs_portal_eaze/model/payment_group.dart';
-import 'package:rcs_portal_eaze/ui/home_controller.dart';
+import 'package:rcs_portal_eaze/ui/home/home_controller.dart';
 import 'package:rcs_portal_eaze/ui/payment/payment_controller.dart';
 import 'package:rcs_portal_eaze/ui/payment/payment_screen.dart';
 import 'package:rcs_portal_eaze/utils/util.dart';
@@ -176,8 +176,8 @@ class PortalEazeHomeScreen extends GetView<PortalEazeHomeController> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 8),
-                child: Image.asset(
-                  "assets/images/tracking.png",
+                child: Image.network(
+                  "https://github.com/egov-recis/rcs_portal_eaze/blob/main/assets/images/tracking.png?raw=true",
                   width: 24,
                 ),
               ),

@@ -268,8 +268,8 @@ class PortalEazeVirtualAccountScreen
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 8),
-                child: Image.asset(
-                  "assets/images/purchase_guide.png",
+                child: Image.network(
+                  "https://github.com/egov-recis/rcs_portal_eaze/blob/main/assets/images/purchase_guide.png?raw=true",
                   width: 24,
                 ),
               ),
@@ -1166,8 +1166,8 @@ class PortalEazeVirtualAccountScreen
                     size: 20,
                   ),
                 ),
-                Image.asset(
-                  "assets/images/eaze.png",
+                Image.network(
+                  "https://github.com/egov-recis/rcs_portal_eaze/blob/main/assets/images/eaze.png?raw=true",
                   width: 120,
                 ),
                 const SizedBox(),

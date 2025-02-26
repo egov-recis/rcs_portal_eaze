@@ -1,8 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rcs_portal_eaze/base/dependencies.dart';
-import 'package:rcs_portal_eaze/ui/home_screen.dart';
+import 'package:rcs_portal_eaze/ui/splash/splash_screen.dart';
 import 'package:rcs_portal_eaze_example/firebase_options.dart';
 
 void main() async {
@@ -18,9 +17,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Dependencies().initialize();
     return GetMaterialApp(
-      home: PortalEazeHomeScreen(uniqueCode: "test123"),
+      home: PortalEazeSplashScreen(uniqueCode: "test"),
     );
   }
 }

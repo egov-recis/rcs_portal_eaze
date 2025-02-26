@@ -9,3 +9,8 @@
 ## 0.0.3
 
 * Rename class name
+
+
+## 0.0.4
+
+* Set image to network

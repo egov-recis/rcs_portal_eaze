@@ -171,10 +171,10 @@ sheetError({
             padding: const EdgeInsets.symmetric(vertical: 80),
             child: AspectRatio(
               aspectRatio: 3,
-              child: Image.asset(
+              child: Image.network(
                 typeError == 500
-                    ? 'assets/images/error_code_500.png'
-                    : 'assets/images/error_code_400.png',
+                    ? 'https://github.com/egov-recis/rcs_portal_eaze/blob/main/assets/images/error_code_500.png?raw=true'
+                    : 'https://github.com/egov-recis/rcs_portal_eaze/blob/main/assets/images/error_code_400.png?raw=true',
               ),
             ),
           ),
