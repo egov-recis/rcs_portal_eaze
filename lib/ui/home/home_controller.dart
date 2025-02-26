@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rcs_portal_eaze/base/api_service.dart';
+import 'package:rcs_portal_eaze/base/base_controller.dart';
 import 'package:rcs_portal_eaze/base/preferences.dart';
 import 'package:rcs_portal_eaze/model/news.dart';
 import 'package:rcs_portal_eaze/model/payment_group.dart';
@@ -10,9 +10,7 @@ import 'package:rcs_portal_eaze/model/response/response_payment_history.dart';
 import 'package:rcs_portal_eaze/model/transaction.dart';
 import 'package:rcs_portal_eaze/model/virtual_account.dart';
 
-class PortalEazeHomeController extends GetxController {
-  var service = Get.find<PortalEazeApiService>();
-
+class PortalEazeHomeController extends PortalEazeBaseController {
   RxBool loadingNews = false.obs;
   RxBool loadingPaymentType = false.obs;
   RxBool loadingPaymentGroup = false.obs;

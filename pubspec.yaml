@@ -1,6 +1,6 @@
 name: rcs_portal_eaze
 description: "A Plugin Project From RCS As A Portal Eaze Feature."
-version: 0.0.4
+version: 0.0.5
 homepage: https://github.com/egov-recis/rcs_portal_eaze
 
 environment:
@@ -24,6 +24,7 @@ dependencies:
   intl: ^0.19.0
   firebase_core: ^3.12.0
   firebase_database: ^11.3.3
+  sqflite: ^2.3.3+1
 
 dev_dependencies:
   flutter_test:

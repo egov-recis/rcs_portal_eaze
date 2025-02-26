@@ -14,7 +14,7 @@ class PortalEazeSplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Dependencies().initialize();
     Timer(const Duration(seconds: 2), () async {
-      Get.to(() => PortalEazeHomeScreen(uniqueCode: uniqueCode));
+      Get.off(() => PortalEazeHomeScreen(uniqueCode: uniqueCode));
     });
     return Scaffold(
       body: SizedBox(
@@ -26,6 +26,7 @@ class PortalEazeSplashScreen extends StatelessWidget {
             Image.network(
               "https://github.com/egov-recis/rcs_portal_eaze/blob/main/assets/images/eaze.png?raw=true",
               width: 200,
+              errorBuilder: (context, error, stackTrace) => Container(),
             ),
             Text(
               "Selamat Datang",

@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rcs_portal_eaze/base/sql_service.dart';
 import 'package:rcs_portal_eaze/common/strings.dart';
 import 'package:rcs_portal_eaze/common/text.dart';
 import 'package:rcs_portal_eaze/model/news.dart';
@@ -8,6 +9,8 @@ import 'package:rcs_portal_eaze/model/payment_group.dart';
 import 'package:rcs_portal_eaze/ui/home/home_controller.dart';
 import 'package:rcs_portal_eaze/ui/payment/payment_controller.dart';
 import 'package:rcs_portal_eaze/ui/payment/payment_screen.dart';
+import 'package:rcs_portal_eaze/ui/tracking/tracking_controller.dart';
+import 'package:rcs_portal_eaze/ui/tracking/tracking_screen.dart';
 import 'package:rcs_portal_eaze/utils/util.dart';
 import 'package:rcs_portal_eaze/utils/widgets.dart';
 
@@ -156,7 +159,8 @@ class PortalEazeHomeScreen extends GetView<PortalEazeHomeController> {
       padding: const EdgeInsets.symmetric(vertical: 16),
       child: GestureDetector(
         onTap: () {
-          Get.toNamed(Strings.trackingRoute);
+          Get.lazyPut(() => TrackingController());
+          Get.to(() => TrackingScreen());
         },
         child: Container(
           decoration: BoxDecoration(
@@ -179,6 +183,7 @@ class PortalEazeHomeScreen extends GetView<PortalEazeHomeController> {
                 child: Image.network(
                   "https://github.com/egov-recis/rcs_portal_eaze/blob/main/assets/images/tracking.png?raw=true",
                   width: 24,
+                  errorBuilder: (context, error, stackTrace) => Container(),
                 ),
               ),
               Expanded(
@@ -394,6 +399,7 @@ class PortalEazeHomeScreen extends GetView<PortalEazeHomeController> {
     return GestureDetector(
       onTap: () async {
         // Get.back();
+        Get.lazyPut(() => PortalEazeSqlService());
         Get.lazyPut(() => PaymentController());
         await Get.to(() => PaymentScreen(), arguments: data)?.then(
           (value) => controller.getHistory(),
@@ -597,6 +603,8 @@ class PortalEazeHomeScreen extends GetView<PortalEazeHomeController> {
               child: Image.network(
                 data.image.toString(),
                 fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) =>
+                    const Icon(Icons.close),
               ),
             ),
             Align(

@@ -286,8 +286,11 @@ class PortalEazeApiService {
     } catch (e) {
       if (e is DioException) {
         DioException error = e;
-        Map<String, dynamic> map = jsonDecode(error.response.toString());
-        response = ApiResponse<New>.fromJson(map, (data) => New.fromJson(data));
+        Map<String, dynamic>? map = jsonDecode(error.response.toString());
+        response = ApiResponse<New>.fromJson(
+          map ?? {},
+          (data) => New.fromJson(data),
+        );
       }
     }
     return response;
@@ -306,9 +309,11 @@ class PortalEazeApiService {
     } catch (e) {
       if (e is DioException) {
         DioException error = e;
-        Map<String, dynamic> map = jsonDecode(error.response.toString());
+        Map<String, dynamic>? map = jsonDecode(error.response.toString());
         response = ApiResponse<PaymentTypes>.fromJson(
-            map, (data) => PaymentTypes.fromJson(data));
+          map ?? {},
+          (data) => PaymentTypes.fromJson(data),
+        );
       }
     }
     return response;
@@ -333,8 +338,8 @@ class PortalEazeApiService {
             ),
           );
         } else {
-          Map<String, dynamic> map = jsonDecode(error.response.toString());
-          response = ResponsePaymentCategory.fromJson(map);
+          Map<String, dynamic>? map = jsonDecode(error.response.toString());
+          response = ResponsePaymentCategory.fromJson(map ?? {});
         }
       }
     }
@@ -357,8 +362,8 @@ class PortalEazeApiService {
     } catch (e) {
       if (e is DioException) {
         DioException error = e;
-        Map<String, dynamic> map = jsonDecode(error.response.toString());
-        response = ResponsePaymentType.fromJson(map);
+        Map<String, dynamic>? map = jsonDecode(error.response.toString());
+        response = ResponsePaymentType.fromJson(map ?? {});
       }
     }
     return response;
@@ -377,8 +382,8 @@ class PortalEazeApiService {
     } catch (e) {
       if (e is DioException) {
         DioException error = e;
-        Map<String, dynamic> map = jsonDecode(error.response.toString());
-        response = ResponsePaymentType.fromJson(map);
+        Map<String, dynamic>? map = jsonDecode(error.response.toString());
+        response = ResponsePaymentType.fromJson(map ?? {});
       }
     }
     return response;
@@ -403,8 +408,8 @@ class PortalEazeApiService {
             ),
           );
         } else {
-          Map<String, dynamic> map = jsonDecode(error.response.toString());
-          response = ResponsePaymentType.fromJson(map);
+          Map<String, dynamic>? map = jsonDecode(error.response.toString());
+          response = ResponsePaymentType.fromJson(map ?? {});
         }
       }
     }
@@ -424,8 +429,8 @@ class PortalEazeApiService {
     } catch (e) {
       if (e is DioException) {
         DioException error = e;
-        Map<String, dynamic> map = jsonDecode(error.response.toString());
-        response = ResponsePaymentType.fromJson(map);
+        Map<String, dynamic>? map = jsonDecode(error.response.toString());
+        response = ResponsePaymentType.fromJson(map ?? {});
       }
     }
     return response;
@@ -465,8 +470,8 @@ class PortalEazeApiService {
     } catch (e) {
       if (e is DioException) {
         DioException error = e;
-        Map<String, dynamic> map = jsonDecode(error.response.toString());
-        response = ResponsePaymentQr.fromJson(map);
+        Map<String, dynamic>? map = jsonDecode(error.response.toString());
+        response = ResponsePaymentQr.fromJson(map ?? {});
       }
     }
     return response;
@@ -490,9 +495,9 @@ class PortalEazeApiService {
     } catch (e) {
       if (e is DioException) {
         DioException error = e;
-        Map<String, dynamic> map = jsonDecode(error.response.toString());
+        Map<String, dynamic>? map = jsonDecode(error.response.toString());
         response = ApiResponse<Token>.fromJson(
-          map,
+          map ?? {},
           (data) => Token.fromJson(data),
         );
       }

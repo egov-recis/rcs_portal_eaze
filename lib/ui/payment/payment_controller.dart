@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rcs_portal_eaze/base/api_service.dart';
+import 'package:rcs_portal_eaze/base/base_controller.dart';
 import 'package:rcs_portal_eaze/base/preferences.dart';
 import 'package:rcs_portal_eaze/model/payment_group.dart';
 import 'package:rcs_portal_eaze/model/payment_type_group.dart';
 import 'package:rcs_portal_eaze/model/response/response_denom.dart';
 import 'package:rcs_portal_eaze/utils/util.dart';
 
-class PaymentController extends GetxController {
-  var service = Get.find<PortalEazeApiService>();
+class PaymentController extends PortalEazeBaseController {
   TextEditingController tfPaymentTypeController = TextEditingController();
   TextEditingController tfIdBillingController = TextEditingController();
   TextEditingController tfTotalController = TextEditingController();
