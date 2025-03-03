@@ -17,3 +17,7 @@
 ## 0.0.5
 
 * Add tracking
+
+## 0.0.6
+
+* set configurable color, set configurable menu
