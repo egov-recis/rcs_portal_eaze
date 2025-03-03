@@ -1,12 +1,16 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rcs_portal_eaze/base/base_controller.dart';
 import 'package:rcs_portal_eaze/base/preferences.dart';
+import 'package:rcs_portal_eaze/common/strings.dart';
 import 'package:rcs_portal_eaze/model/news.dart';
 import 'package:rcs_portal_eaze/model/payment_group.dart';
 import 'package:rcs_portal_eaze/model/payment_type.dart';
 import 'package:rcs_portal_eaze/model/qris.dart';
 import 'package:rcs_portal_eaze/model/response/response_payment_history.dart';
+import 'package:rcs_portal_eaze/model/token.dart';
 import 'package:rcs_portal_eaze/model/transaction.dart';
 import 'package:rcs_portal_eaze/model/virtual_account.dart';
 
@@ -108,7 +112,6 @@ class PortalEazeHomeController extends PortalEazeBaseController {
   void getPaymentGroup() async {
     loadingPaymentGroup.value = true;
     var result = await service.paymentGroup();
-    print('payment_group: ${result.code}');
     if (result.code == 200) {
       listPaymentGroup.clear();
       listPaymentGroupFilter.clear();
@@ -137,5 +140,16 @@ class PortalEazeHomeController extends PortalEazeBaseController {
   void resetPaymentGroupFilter() {
     listPaymentGroupFilter.clear();
     listPaymentGroupFilter.addAll(listPaymentGroup);
+  }
+
+  setPrimaryColor() async {
+    Strings.primaryColor =
+        Token.fromJson(jsonDecode(await Preferences().getToken()))
+                .appConfig
+                ?.colors
+                ?.primary
+                ?.toColor() ??
+            Strings.primaryColor;
+    print(Strings.primaryColor);
   }
 }

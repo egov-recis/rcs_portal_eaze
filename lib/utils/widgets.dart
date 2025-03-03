@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:rcs_portal_eaze/common/strings.dart';
 import 'package:rcs_portal_eaze/common/text.dart';
 import 'package:rcs_portal_eaze/model/response/response_payment_history.dart';
 
@@ -116,8 +117,10 @@ class LoadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: CircularProgressIndicator(),
+    return Center(
+      child: CircularProgressIndicator(
+        color: Strings.primaryColor,
+      ),
     );
   }
 }
@@ -133,7 +136,7 @@ class AlertWidget extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: const Color(0xFFE7F3F9),
+        color: Strings.primaryColor.withOpacity(0.2),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -144,7 +147,7 @@ class AlertWidget extends StatelessWidget {
             margin: const EdgeInsets.only(top: 4),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(24),
-              color: const Color(0xFF75BBD7),
+              color: Strings.primaryColor,
             ),
             child: const Center(
               child: Text(
@@ -219,13 +222,14 @@ class SalinVAWidget extends StatelessWidget {
           border: enable == false
               ? null
               : Border.all(
-                  color: Colors.blue,
+                  color: Strings.primaryColor,
                 ),
           color: enable == false ? Colors.grey.shade200 : Colors.white,
         ),
         child: Text(
           text ?? "Salin Virtual Account",
-          style: textBody2(color: enable == false ? Colors.grey : Colors.blue),
+          style: textBody2(
+              color: enable == false ? Colors.grey : Strings.primaryColor),
         ),
       ),
     );

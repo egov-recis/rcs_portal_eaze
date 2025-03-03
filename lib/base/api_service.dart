@@ -29,6 +29,7 @@ class PortalEazeApiService {
     cancelToken = CancelToken();
     client.options = BaseOptions(
       baseUrl: "http://103.182.72.242:8089/api/",
+      // baseUrl: "https://eaze-dev.onbilling.id/api/",
       connectTimeout: const Duration(seconds: 30),
       receiveTimeout: const Duration(seconds: 60),
       sendTimeout: const Duration(seconds: 60),
@@ -37,13 +38,15 @@ class PortalEazeApiService {
     );
     clientToken.options = BaseOptions(
       baseUrl: "http://103.182.72.242:8089/api/",
+      // baseUrl: "https://eaze-dev.onbilling.id/api/",
       connectTimeout: const Duration(seconds: 30),
       receiveTimeout: const Duration(seconds: 60),
       sendTimeout: const Duration(seconds: 60),
-      contentType: "application/json",
+      // contentType: "application/json",
       // contentType: "text/plain",
     );
     client.interceptors.add(apiInterceptor);
+    clientToken.interceptors.add(apiInterceptorToken);
   }
 
   late Dio client;
@@ -477,21 +480,50 @@ class PortalEazeApiService {
     return response;
   }
 
-  Future<ApiResponse<Token>> login() async {
+  // Future<ApiResponse<Token>> login() async {
+  //   ApiResponse<Token> response = ApiResponse<Token>();
+  //   try {
+  //     var result = await clientToken.post(
+  //       "login",
+  //       data: {
+  //         "email": "mobile_app1@mail.com",
+  //         "password": "mobileapp1",
+  //       },
+  //     );
+  //     response = ApiResponse<Token>.fromJson(
+  //       result.data,
+  //       (data) => Token.fromJson(data),
+  //     );
+  //     print("login: ${response.data?.token}");
+  //     Preferences().saveToken(response.data?.token);
+  //   } catch (e) {
+  //     print("login: $e");
+  //     if (e is DioException) {
+  //       DioException error = e;
+  //       Map<String, dynamic>? map = jsonDecode(error.response.toString());
+  //       response = ApiResponse<Token>.fromJson(
+  //         map ?? {},
+  //         (data) => Token.fromJson(data),
+  //       );
+  //     }
+  //   }
+  //   return response;
+  // }
+
+  Future<ApiResponse<Token>> platform() async {
     ApiResponse<Token> response = ApiResponse<Token>();
     try {
       var result = await clientToken.post(
-        "login",
+        "access/platform",
         data: {
-          "email": "mobile_app1@mail.com",
-          "password": "mobileapp1",
+          "access_key": "4a44a80ebe75",
         },
       );
       response = ApiResponse<Token>.fromJson(
         result.data,
         (data) => Token.fromJson(data),
       );
-      Preferences().saveToken(response.data?.token);
+      Preferences().saveToken(jsonEncode(response.data?.toJson()));
     } catch (e) {
       if (e is DioException) {
         DioException error = e;

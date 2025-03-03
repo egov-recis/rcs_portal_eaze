@@ -258,8 +258,8 @@ class PortalEazeVirtualAccountScreen
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Colors.blue.shade100,
-                Colors.blue.shade50,
+                Strings.primaryColor.withOpacity(0.5),
+                Strings.primaryColor.withOpacity(0.1),
               ],
             ),
           ),
@@ -271,6 +271,7 @@ class PortalEazeVirtualAccountScreen
                 child: Image.network(
                   "https://github.com/egov-recis/rcs_portal_eaze/blob/main/assets/images/purchase_guide.png?raw=true",
                   width: 24,
+                  color: Strings.primaryColor,
                 ),
               ),
               Expanded(
@@ -744,9 +745,7 @@ class PortalEazeVirtualAccountScreen
   Widget buildVA(BuildContext context) {
     return Obx(
       () => controller.loading.value
-          ? const Center(
-              child: CircularProgressIndicator(),
-            )
+          ? LoadingWidget()
           : buildPendingVA(flag: controller.tracking.flag, context: context),
     );
   }
@@ -962,9 +961,7 @@ class PortalEazeVirtualAccountScreen
                 ),
               ),
               const Expanded(
-                child: Center(
-                  child: CircularProgressIndicator(),
-                ),
+                child: LoadingWidget(),
               ),
             ],
           );
@@ -1205,14 +1202,14 @@ class PortalEazeVirtualAccountScreen
                     10,
                   ),
                   border: Border.all(
-                    color: Colors.blue,
+                    color: Strings.primaryColor,
                   ),
                   color: Colors.white,
                 ),
-                child: const Center(
+                child: Center(
                   child: Text(
                     "Salin Virtual Account",
-                    style: TextStyle(color: Colors.blue),
+                    style: TextStyle(color: Strings.primaryColor),
                   ),
                 ),
               ),

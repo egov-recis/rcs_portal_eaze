@@ -120,7 +120,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
-                      color: const Color(0xFF425BA7),
+                      color: Strings.primaryColor,
                     ),
                     child: Center(
                       child: Text(
@@ -631,6 +631,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       controller: controller.tfIdBillingController,
                       keyboardType: TextInputType.name,
                       decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Strings.primaryColor),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
@@ -639,6 +643,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                           horizontal: 12,
                         ),
                       ),
+                      cursorColor: Strings.primaryColor,
                       style: textCaption(),
                     ),
                   ),

@@ -4,17 +4,33 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rcs_portal_eaze/base/dependencies.dart';
 import 'package:rcs_portal_eaze/common/text.dart';
+import 'package:rcs_portal_eaze/ui/home/home_controller.dart';
 import 'package:rcs_portal_eaze/ui/home/home_screen.dart';
 
 class PortalEazeSplashScreen extends StatelessWidget {
   final String uniqueCode;
-  const PortalEazeSplashScreen({super.key, required this.uniqueCode});
+  final bool? linearMenu;
+  const PortalEazeSplashScreen({
+    super.key,
+    required this.uniqueCode,
+    this.linearMenu,
+  });
 
   @override
   Widget build(BuildContext context) {
     Dependencies().initialize();
-    Timer(const Duration(seconds: 2), () async {
-      Get.off(() => PortalEazeHomeScreen(uniqueCode: uniqueCode));
+    var controller = Get.find<PortalEazeHomeController>();
+    controller.service.platform().then((value) {
+      controller.getPaymentGroup();
+      controller.setPrimaryColor();
+      Timer(const Duration(seconds: 2), () async {
+        Get.off(
+          () => PortalEazeHomeScreen(
+            uniqueCode: uniqueCode,
+            isLinearMenu: linearMenu,
+          ),
+        );
+      });
     });
     return Scaffold(
       body: SizedBox(

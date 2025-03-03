@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rcs_portal_eaze/common/strings.dart';
 import 'package:rcs_portal_eaze/common/text.dart';
+import 'package:rcs_portal_eaze/utils/widgets.dart';
 import 'tracking_controller.dart';
 
 class TrackingScreen extends GetView<TrackingController> {
@@ -145,12 +146,17 @@ class TrackingScreen extends GetView<TrackingController> {
           TextField(
             controller: controller.tfBillingController,
             decoration: InputDecoration(
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Strings.primaryColor),
+                borderRadius: BorderRadius.circular(12),
+              ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
               hintText: 'Contoh : DND0100192399',
               hintStyle: textBody2(color: Colors.grey),
             ),
+            cursorColor: Strings.primaryColor,
             style: textBody2(),
           ),
         ],
@@ -230,9 +236,7 @@ class TrackingScreen extends GetView<TrackingController> {
         ),
         child: Obx(
           () => controller.loading.value
-              ? const Center(
-                  child: CircularProgressIndicator(),
-                )
+              ? LoadingWidget()
               : GestureDetector(
                   onTap: () {
                     Get.focusScope?.unfocus();
@@ -241,7 +245,7 @@ class TrackingScreen extends GetView<TrackingController> {
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
-                      color: const Color(0xFF425BA7),
+                      color: Strings.primaryColor,
                     ),
                     child: Center(
                       child: Text(

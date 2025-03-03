@@ -16,22 +16,28 @@ import 'package:rcs_portal_eaze/utils/widgets.dart';
 
 class PortalEazeHomeScreen extends GetView<PortalEazeHomeController> {
   final String uniqueCode;
-  const PortalEazeHomeScreen({super.key, required this.uniqueCode});
+  final bool? isLinearMenu;
+  const PortalEazeHomeScreen({
+    super.key,
+    required this.uniqueCode,
+    this.isLinearMenu,
+  });
 
   @override
   Widget build(BuildContext context) {
-    controller.service.login().then((value) {
-      controller.getPaymentGroup();
-    });
     return Scaffold(
       body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
         width: double.maxFinite,
         color: Colors.white,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            search(),
+            isLinearMenu == true
+                ? SizedBox(height: AppBar().preferredSize.height)
+                : Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: search(),
+                  ),
             Expanded(
               child: RefreshIndicator(
                 onRefresh: () async {
@@ -43,11 +49,23 @@ class PortalEazeHomeScreen extends GetView<PortalEazeHomeController> {
                       Obx(
                         () => controller.loadingPaymentGroup.value
                             ? const CircularProgressIndicator()
-                            : menu(),
+                            : isLinearMenu == true
+                                ? linearMenu()
+                                : Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20),
+                                    child: gridMenu(),
+                                  ),
                       ),
-                      tracking(),
-                      lastTransaction(),
-                      carousel(),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: tracking(),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: lastTransaction(),
+                      ),
+                      // carousel(),
                     ],
                   ),
                 ),
@@ -170,8 +188,8 @@ class PortalEazeHomeScreen extends GetView<PortalEazeHomeController> {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Colors.blue.shade100,
-                Colors.blue.shade50,
+                Strings.primaryColor.withOpacity(0.5),
+                Strings.primaryColor.withOpacity(0.1),
               ],
             ),
           ),
@@ -184,6 +202,7 @@ class PortalEazeHomeScreen extends GetView<PortalEazeHomeController> {
                   "https://github.com/egov-recis/rcs_portal_eaze/blob/main/assets/images/tracking.png?raw=true",
                   width: 24,
                   errorBuilder: (context, error, stackTrace) => Container(),
+                  color: Strings.primaryColor,
                 ),
               ),
               Expanded(
@@ -395,6 +414,56 @@ class PortalEazeHomeScreen extends GetView<PortalEazeHomeController> {
     );
   }
 
+  Widget itemMenuLinear(ItemPaymentGroup data) {
+    return GestureDetector(
+      onTap: () async {
+        // Get.back();
+        Get.lazyPut(() => PortalEazeSqlService());
+        Get.lazyPut(() => PaymentController());
+        await Get.to(() => PaymentScreen(), arguments: data)?.then(
+          (value) => controller.getHistory(),
+        );
+      },
+      child: Column(
+        children: [
+          Card(
+            elevation: 4,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Container(
+              height: 80,
+              width: 80,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(24),
+              ),
+              padding: const EdgeInsets.all(10),
+              child: Center(
+                child: Image.network(
+                  data.icon ?? "",
+                  errorBuilder: (context, error, stackTrace) {
+                    return const Icon(Icons.close);
+                  },
+                  width: 32,
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 8),
+            child: Text(
+              data.name ?? "-",
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: textCaption(),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget itemMenuNormal(ItemPaymentGroup data) {
     return GestureDetector(
       onTap: () async {
@@ -461,7 +530,30 @@ class PortalEazeHomeScreen extends GetView<PortalEazeHomeController> {
     }
   }
 
-  Widget menu() {
+  Widget linearMenu() {
+    Map<String, int> availableManu = getLengthAvailableMenu(
+      controller.listPaymentGroup.length,
+    );
+    return SizedBox(
+      height: 120,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        shrinkWrap: true,
+        itemCount: availableManu['result'],
+        itemBuilder: (context, index) {
+          ItemPaymentGroup data = controller.listPaymentGroup[index];
+          return Padding(
+            padding: EdgeInsets.only(
+                right: (index - 1) == availableManu['result'] ? 0 : 16),
+            child: itemMenuLinear(data),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget gridMenu() {
     Map<String, int> availableManu = getLengthAvailableMenu(
       controller.listPaymentGroup.length,
     );
